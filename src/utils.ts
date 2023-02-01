@@ -50,9 +50,7 @@ export function parseTime (time: string | number | Date, cFormat?: string) {
  * @returns {string}
  */
 export function idCardDesensitization (idCard: string | number): string {
-  if (typeof idCard === 'number') {
-    idCard = idCard.toString();
-  }
+  idCard =  numberToString(idCard);
   const len = idCard.length;
   if (len && len > 4) {
     const temp = idCard.substring(4, 15);
@@ -83,15 +81,12 @@ export function getDiffDate (targetDate: string | number | Date): string | numbe
  * @returns {string}
  */
 export function trim (str: string | number): string {
-  if (typeof str === 'number') {
-    str = str.toString();
-  }
-  return str.replace(/(^\s*)|(\s*$)/g, '');
+  return numberToString(str).replace(/(^\s*)|(\s*$)/g, '');
 }
 
 /**
  * 生产随机数
- * @param {(Object|string|number)} time
+ * @param {(Object|String|number)} time
  * @param {string} cFormat
  * @returns {string}
  */
@@ -131,6 +126,19 @@ export function randomNum (len: number, radix: number) {
  * @param  {String|Number} str
  * @return {Boolean}
  */
-export function isPhoneNum (str: string) {
-  return /^(\+?0?86-?)?1[3456789]\d{9}$/.test(str);
+export function isPhoneNum (str: string | number): boolean {
+  return /^(\+?0?86-?)?1[3456789]\d{9}$/.test(numberToString(str));
+}
+/**
+ *
+ * @desc    数字转为字符串
+ * @param  {String|Number} val
+ * @return {String}
+ */
+export function numberToString (val: number | string): string {
+  if(typeof val === 'number') {
+    return val.toString();
+  } else {
+    return val;
+  }
 }
