@@ -50,10 +50,27 @@
     ]
   },
   "lint-staged": {
-    "*.{ts,js}": [
-      "node --max_old_space_size=8192 ./node_modules/.bin/prettier -w",
-      "node --max_old_space_size=8192 ./node_modules/.bin/eslint --fix --color",
-      "git add"
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "{!(package)*.json,*.code-snippets,.!(browserslist)*rc}": [
+      "prettier --write--parser json"
+    ],
+    "package.json": [
+      "prettier --write"
+    ],
+    "*.vue": [
+      "eslint --fix",
+      "prettier --write",
+      "stylelint --fix"
+    ],
+    "*.{scss,less,styl,html}": [
+      "stylelint --fix",
+      "prettier --write"
+    ],
+    "*.md": [
+      "prettier --write"
     ]
   }
 }
