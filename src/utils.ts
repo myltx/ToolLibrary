@@ -1,10 +1,10 @@
 /**
- * Parse the time to string
+ * 日期格式转换
  * @param {(Object|string|number)} time
  * @param {string} cFormat
  * @returns {string}
  */
-export function parseTime(time: string | number | Date, cFormat?: string) {
+export function parseTime (time: string | number | Date, cFormat?: string) {
   if (arguments.length === 0) {
     return null;
   }
@@ -49,7 +49,7 @@ export function parseTime(time: string | number | Date, cFormat?: string) {
  * @param {(string|number)} idCard
  * @returns {string}
  */
-export function idCardDesensitization(idCard: string | number): string {
+export function idCardDesensitization (idCard: string | number): string {
   if (typeof idCard === 'number') {
     idCard = idCard.toString();
   }
@@ -67,7 +67,7 @@ export function idCardDesensitization(idCard: string | number): string {
  * @param {(string | number | Date)} targetDate
  * @returns {string | number}
  */
-export function getDiffDate(targetDate: string | number | Date): string | number {
+export function getDiffDate (targetDate: string | number | Date): string | number {
   let date1 = new Date(targetDate);
   let date2 = new Date();
   date1 = new Date(date1.getFullYear(), date1.getMonth(), date1.getDate());
@@ -77,27 +77,25 @@ export function getDiffDate(targetDate: string | number | Date): string | number
   return diffDate + 1;
 }
 
-/**去掉字符串前后所有空格*/
 /**
- * 获取指定日期到今天的相差天数
+ * 去掉字符串前后所有空格
  * @param {(string | number)} str
  * @returns {string}
  */
-export function trim(str: string | number): string {
+export function trim (str: string | number): string {
   if (typeof str === 'number') {
     str = str.toString();
   }
   return str.replace(/(^\s*)|(\s*$)/g, '');
 }
 
-// 生产随机数
 /**
  * 生产随机数
  * @param {(Object|string|number)} time
  * @param {string} cFormat
  * @returns {string}
  */
-export function randomNum(len: number, radix: number) {
+export function randomNum (len: number, radix: number) {
   const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
   const uuid = [] as string[];
   radix = radix || chars.length;
@@ -125,4 +123,14 @@ export function randomNum(len: number, radix: number) {
     }
   }
   return uuid.join('') + new Date().getTime();
+}
+
+/**
+ *
+ * @desc   判断是否为手机号
+ * @param  {String|Number} str
+ * @return {Boolean}
+ */
+export function isPhoneNum (str: string) {
+  return /^(\+?0?86-?)?1[3456789]\d{9}$/.test(str);
 }
