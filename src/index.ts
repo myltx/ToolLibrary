@@ -3,5 +3,4 @@ const func = (a: number, b: number): number => {
 };
 
 export * from './utils';
-export * from './zip';
 export { func };
