@@ -2,7 +2,7 @@
 
 基于 TypeScript、rollup实现
 
-[更新日志](./CHANGELOG.md)
+[更新日志](https://github.com/mayunlongtx/ToolLibrary/blob/main/CHANGELOG.md)
 
 
 ```javascript
